@@ -1,26 +1,19 @@
-import React from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React from 'react'
+import './App.css'
+
+import Nav from './components/Nav'
+import { useWindowDimensions } from './hooks'
 
 function App() {
+  const { width } = useWindowDimensions()
+
   return (
     <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+      <Nav />
+      {width > 768 && <div className="sidebar">Sidebar</div>}
+      <main className="content">Main</main>
+      {width > 768 && <div className="settings">Settings</div>}
     </div>
-  );
+  )
 }
-
-export default App;
+export default App
